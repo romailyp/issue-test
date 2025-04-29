@@ -1,4 +1,10 @@
-netspaker_scan_job:
+name: Netsparker Scan Workflow
+
+on:
+  workflow_dispatch:  # Allows manual triggering from the GitHub Actions UI
+
+jobs:
+  netspaker_scan_job:
     runs-on: ubuntu-20.04
     steps:
       # Starts actions with given inputs
