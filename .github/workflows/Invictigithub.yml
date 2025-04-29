@@ -23,7 +23,6 @@ jobs:
           website-id: 'c0e96588-04c8-485a-94ad-b2b201ddbe4a'
           scan-type: 'FullWithSelectedProfile'
           profile-id: 'f2ffea9d-d9b7-448b-5936-b2bf030e3869'
-          user-id: ${{ secrets.NETSPARKER_USER_ID }}
           api-token: ${{ secrets.NETSPARKER_API_TOKEN }}
           base-url: 'https://eu.netsparker.cloud'
           fail-on-level: 'DoNotFail'
