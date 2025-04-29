@@ -1,0 +1,33 @@
+name: INVICTI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:  
+  netspaker_scan_job:
+    runs-on: ubuntu-20.04
+    steps:
+      # Starts actions with given inputs
+      - name: Start Netsparker Enterprise Scan
+        uses: netsparker/Netsparker-Cloud-GitHub-Actions@v1.0.0
+        id: netsparker-enterprise-scan-step
+        with:
+          website-id: 'c0e96588-04c8-485a-94ad-b2b201ddbe4a'
+          scan-type: 'FullWithSelectedProfile'
+          profile-id: 'f2ffea9d-d9b7-448b-5936-b2bf030e3869'
+          user-id: ${{ secrets.NETSPARKER_USER_ID }}
+          api-token: ${{ secrets.NETSPARKER_API_TOKEN }}
+          base-url: 'https://eu.netsparker.cloud'
+          fail-on-level: 'DoNotFail'
+          wait-for-completion: false
+      # Displays output for action
+      - name: Display Scan Request Message
+        run: echo "${{ steps.netsparker-enterprise-scan-step.outputs.scan-message }}"
